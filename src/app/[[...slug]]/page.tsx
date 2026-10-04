@@ -1,0 +1,5 @@
+import Website from '@/components/Website';
+import {products} from '@/features/catalogue/seed';
+import type {Metadata} from 'next';
+export async function generateMetadata({params}:{params:Promise<{slug?:string[]}>}):Promise<Metadata>{const {slug=[]}=await params;const titles:Record<string,string>={about:'About',products:'Product catalogue',services:'Service & support',contact:'Contact',quote:'Request a quotation',signin:'Sign in',cart:'Your cart',checkout:'Checkout',account:'My account',dashboard:'Staff workspace',resources:'Technical resources',applications:'Applications'};const product=slug[0]==='products'&&slug[1]?products.find(p=>p.id===slug[1]):undefined;return {title:product?.name??titles[slug[0]]??'Industrial lubrication systems',description:product?.description??'DS Lub lubrication equipment, product selection and service support in Vadodara. Demonstration website.'};}
+export default async function Page({params}:{params:Promise<{slug?:string[]}>}){const {slug=[]}=await params;return <Website path={'/'+slug.join('/')} initialProducts={products}/>;}

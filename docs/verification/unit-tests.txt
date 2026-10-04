@@ -1,0 +1,17 @@
+
+> ds-lub@0.1.0 test
+> tsx --test tests/*.test.ts
+
+✔ checkout prices come from catalogue, not browser totals (1.1149ms)
+✔ last available unit and quote-only items cannot be oversold (1.1723ms)
+✔ invalid and duplicate quantities cannot bypass stock validation (0.2618ms)
+✔ staff permissions and customer ownership are distinct (0.1493ms)
+✔ separate demo customer emails have isolated stable identities (0.8073ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 218.4159

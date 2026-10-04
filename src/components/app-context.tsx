@@ -1,0 +1,10 @@
+'use client';
+import {createContext,useContext} from 'react';
+import type {Product,User,RecordItem,Workflow as WorkflowType} from '@/features/catalogue/seed';
+export type CartItem={id:string;quantity:number};
+export type State={products:Product[];user:User|null;records:RecordItem[];team:User[];workflows:WorkflowType[];audit:{id:string;actor:string;action:string;created:string}[]};
+export const money=(n:number)=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n/100);
+export const initial:State={products:[],user:null,records:[],team:[],workflows:[],audit:[]};
+type AppContext=State & {cart:CartItem[];compare:string[];add:(p:Product)=>void;toggleCompare:(id:string)=>void;setCart:(v:CartItem[])=>void;action:(data:object)=>Promise<{message:string;id?:string}>;notice:(s:string)=>void};
+export const Context=createContext<AppContext>(null!);
+export const useApp=()=>useContext(Context);
